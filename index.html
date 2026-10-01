@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DELLYS · Sistema de Cotação</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<section id="login" class="login">
+  <form id="form-login" class="box">
+    <div class="brand"><b>DELLYS</b><small>Sistema de Cotação</small></div>
+    <p id="demo-aviso" class="aviso" hidden>Modo demonstração: o login não é protegido. Preencha o config.js para ativar o login real.</p>
+    <label>E-mail<input id="email" type="email" required autocomplete="username"></label>
+    <label>Senha<input id="senha" type="password" required autocomplete="current-password"></label>
+    <button class="btn primary" id="btn-entrar">Entrar</button>
+    <p id="erro" class="erro" role="alert"></p>
+  </form>
+</section>
+
+<div id="app" class="shell" hidden>
+  <aside id="side">
+    <div class="brand"><b>DELLYS</b><small>Sistema de Cotação</small></div>
+    <nav id="nav" aria-label="Menu principal"></nav>
+    <button id="colapsar" class="ni rec" data-tip="Expandir menu" aria-label="Recolher menu"><span data-i="left"></span><span class="lb">Recolher</span></button>
+  </aside>
+  <div class="col">
+    <header class="top">
+      <div class="tt"><h1>Visão geral</h1><p>Acompanhe suas cotações e atividades recentes</p></div>
+      <div class="tools">
+        <label class="busca"><span data-i="search"></span><input placeholder="Buscar" aria-label="Buscar no sistema"></label>
+        <span class="online"><i></i>Sistema online</span>
+        <span id="data" class="mu"></span>
+        <div class="nw">
+          <button id="notif" class="ic" aria-label="Notificações" aria-expanded="false"><span data-i="bell"></span><em>3</em></button>
+          <div id="drop" class="drop" hidden></div>
+        </div>
+        <button id="tema" class="ic" aria-label="Alternar tema"><span data-i="moon"></span></button>
+        <div class="av" id="av" title=""></div>
+        <button id="sair" class="btn sm">Sair</button>
+      </div>
+    </header>
+    <main>
+      <section id="cards" class="cards" aria-label="Resumo"></section>
+
+      <section class="panel central">
+        <div class="ph">
+          <div><h2>Central de cotações</h2><span class="mu">Última atualização: hoje, <span id="hora"></span></span></div>
+          <div class="acoes"><button class="btn primary glow"><span data-i="plus"></span>Nova cotação</button><button class="btn">Ver pendentes</button></div>
+        </div>
+        <div class="filtros">
+          <label class="busca"><span data-i="search"></span><input id="q" placeholder="Buscar por cotação ou cliente" aria-label="Buscar cotação"></label>
+          <div id="chips" class="chips"></div>
+        </div>
+        <table class="tab">
+          <thead><tr><th>Cotação</th><th>Cliente</th><th>Itens</th><th>Valor</th><th>Status</th><th>Atualização</th></tr></thead>
+          <tbody id="tb"></tbody>
+        </table>
+      </section>
+
+      <div class="duo">
+        <section class="panel"><h2>Atividade recente</h2><ul id="ativ" class="ativ"></ul></section>
+        <div class="stack">
+          <section class="panel"><h2>Acesso rápido</h2><div id="rapido" class="rapido"></div></section>
+          <section class="panel"><h2>Status do sistema</h2><ul id="stat" class="statl"></ul></section>
+        </div>
+      </div>
+      <footer class="rod">DELLYS · Sistema de Cotação · Dados de exemplo apenas para visualização</footer>
+    </main>
+  </div>
+</div>
+<div id="toasts" class="toasts" aria-live="polite"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
